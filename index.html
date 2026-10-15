@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>для самого любимого ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
+:root{--pink:#91c9a5;--hot:#5ca878;--cream:#fff8f0;--purple:#91bda0;--ink:#355843}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Nunito,system-ui,sans-serif;background-color:#f2faf3;background-image:radial-gradient(#cfe8d4 1.5px,transparent 1.5px),linear-gradient(135deg,#f2faf3,#fbfff7 55%,#eff8f0);background-size:22px 22px,100% 100%;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}
+.wrap{width:min(1100px,94vw);margin:auto;padding:30px 0 54px}
+.top{text-align:center;margin-bottom:24px}
+.pill{display:inline-block;background:#fff;border:2px solid #d7eddd;border-radius:999px;padding:7px 14px;font-weight:900;font-size:12px;letter-spacing:1.5px;color:#4f9b70;box-shadow:3px 4px 0 #d7eddd}
+h1{font-family:Pacifico,cursive;font-size:clamp(2.3rem,6vw,4.3rem);line-height:1.12;margin:15px 0 8px;color:#4f9b70;text-shadow:3px 3px 0 #d7eddd}
+.subtitle{margin:0;color:#658a70;font-weight:700}
+.panel{background:rgba(255,255,255,.86);border:2px solid #fff;box-shadow:0 14px 40px #8cc9a029,7px 7px 0 #d9efdf;border-radius:30px;padding:clamp(20px,4vw,36px);position:relative}
+.question{text-align:center;max-width:680px;margin:0 auto 24px}
+.cat-sticker{font-size:46px;display:block;filter:drop-shadow(2px 3px 0 #ffd0e4);animation:bob 2.4s ease-in-out infinite}
+h2{font-size:clamp(1.45rem,4vw,2.2rem);margin:10px 0;color:#365c43}
+.btns{display:flex;justify-content:center;align-items:center;gap:14px;min-height:100px;flex-wrap:wrap;position:relative;isolation:isolate}
+.btns.dodging{min-height:150px}
+.yes{position:relative;z-index:2}
+.yes{background:linear-gradient(135deg,#91c9a5,#5ca878);color:white;padding:14px 31px;border-radius:18px;font-size:1.1rem;font-weight:900;box-shadow:0 6px 0 #3d8559;transition:transform .15s}
+.yes:hover{transform:translateY(-3px) rotate(-2deg)}
+.no{background:#fff;color:#73977e;border:2px solid #cfe8d4;padding:12px 25px;border-radius:17px;font-weight:900;box-shadow:0 5px 0 #d6eadb;position:relative;z-index:5;transition:left .16s ease,top .16s ease,transform .16s ease;white-space:nowrap;touch-action:manipulation}
+.no:focus-visible,.yes:focus-visible{outline:3px solid #91bda0;outline-offset:4px}
+.hint{font-size:.85rem;color:#779c82;margin:14px 0 0}
+.content{display:grid;grid-template-columns: .92fr 1.08fr;gap:22px;align-items:stretch}
+.content.awaiting{display:none}
+.content.revealed{display:grid;animation:revealContent .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes revealContent{from{opacity:0;transform:translateY(24px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.message-card,.heart-card{background:#fff;border:2px solid #d7eddd;border-radius:25px;padding:23px;min-height:300px;position:relative;overflow:hidden}
+.message-card{display:flex;flex-direction:column;justify-content:center}
+.tiny-label{font-size:.72rem;font-weight:900;letter-spacing:1.8px;color:#5ca878;text-transform:uppercase}
+.message{font-size:clamp(1.25rem,2.5vw,1.7rem);line-height:1.55;font-weight:800;margin:14px 0}
+.message em{font-family:Pacifico,cursive;font-style:normal;color:#4f9b70}
+.signature{font-weight:900;color:#6c9b7a}
+.doodle{position:absolute;right:16px;bottom:8px;font-size:36px;opacity:.75;transform:rotate(-12deg)}
+.heart-card{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:330px}
+.heart-title{font-weight:900;font-size:1.15rem;margin:0 0 6px}
+.graph-sub{font-size:.82rem;color:#aa83a0;margin:0 0 10px}
+#heartSvg{width:min(100%,360px);height:auto;overflow:visible;touch-action:manipulation;cursor:pointer;margin-top:2px}
+#gridLines line{stroke:#f4dce9;stroke-width:1;stroke-dasharray:2 5}
+#gridLines line.axis{stroke:#d4b2ca;stroke-width:1.4;stroke-dasharray:none}
+#axisLabels text{font-size:9px;fill:#7da58a}
+#heartPath{fill:#6bb987;fill-opacity:.12;stroke:#5ca878;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2000;stroke-dashoffset:2000;filter:drop-shadow(0 5px 5px #91c9a555)}
+#heartPath.draw{animation:drawHeart 6.5s cubic-bezier(.18,.65,.28,1) forwards}
+#heartPath.complete{stroke-dashoffset:0;fill-opacity:.22}
+#constructionPath{stroke-dasharray:5 5;stroke-linecap:round;stroke-linejoin:round}
+.equations{width:100%;text-align:left;background:#f3faf4;border:1.5px solid #ffe0ef;border-radius:15px;padding:10px 12px;margin:6px 0 7px;font-size:clamp(.75rem,2vw,.88rem);color:#5c8067}
+.eq-head{font-weight:900;color:#4f9b70;font-size:.72rem;letter-spacing:.7px;text-transform:uppercase;margin-bottom:7px}
+.eq-line{display:flex;align-items:flex-start;gap:8px;margin:5px 0;line-height:1.5}
+.eq-dot{width:8px;height:8px;flex:0 0 8px;border-radius:50%;margin-top:5px}
+.eq-dot.pink{background:#5ca878}.eq-dot.purple{background:#91bda0}
+.eq-foot{font-size:.72rem;color:#7da58a;margin-top:7px;border-top:1px dashed #d6eadb;padding-top:6px}
+.graph-legend{display:flex;justify-content:center;gap:10px 14px;flex-wrap:wrap;font-size:.68rem;color:#789b81;margin:4px 0 12px}
+.graph-legend span{display:inline-flex;align-items:center;gap:5px}
+.legend-line{display:inline-block;width:17px;border-top:2px solid}
+.heart-line{border-color:#5ca878}.construction-line{border-color:#91bda0;border-top-style:dashed}
+.legend-dot{width:7px;height:7px;border-radius:50%;background:#fff;border:2px solid #4f9b70}
+.heart-click{display:none;background:#eef8f0;color:#4f9b70;border:2px dashed #8fc9a1;border-radius:999px;padding:10px 16px;font-weight:900;animation:pulse 1.1s infinite}
+.heart-click.show{display:inline-block}
+#heartSvg.clickable{animation:heartNudge 1.1s infinite}
+.hidden{display:none!important}
+.countdown{margin-top:22px;background:linear-gradient(135deg,#fff,#fff0f8);border:2px solid #d7eddd;border-radius:25px;padding:22px;text-align:center}
+.count-title{font-family:Pacifico,cursive;color:#4f9b70;font-size:clamp(1.5rem,4vw,2.2rem);margin:0 0 6px}
+.count-sub{margin:0 0 17px;color:#779a81;font-weight:700}
+.timer{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.timebox{min-width:75px;padding:12px 13px;background:white;border:2px solid #d7eddd;border-radius:17px;box-shadow:0 4px 0 #ffd7e9}
+.timebox strong{display:block;font-size:clamp(1.5rem,4vw,2rem);color:#4f9b70;font-weight:900;font-variant-numeric:tabular-nums}
+.timebox span{font-size:.72rem;color:#a47d99;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.foot{text-align:center;margin-top:23px;color:#b185a1;font-size:.85rem;font-weight:800}
+.float-heart{position:fixed;z-index:20;pointer-events:none;animation:floatUp 1.8s ease-out forwards;font-size:25px}
+.cat-runner{position:fixed;z-index:30;left:-100px;bottom:7vh;font-size:52px;filter:drop-shadow(0 5px 2px #8fb89a44);pointer-events:none;animation:runAcross var(--dur,5s) linear forwards}
+.cat-runner span{display:block;white-space:nowrap;font-size:12px;font-weight:900;text-align:center;color:#d84791;background:#fff;padding:3px 8px;border-radius:99px;margin-top:-4px}
+.sparkle{position:fixed;pointer-events:none;z-index:25;animation:twinkle 1.4s ease-out forwards}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes drawHeart{to{stroke-dashoffset:0}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes heartNudge{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes floatUp{0%{transform:translate(-50%,0) scale(.5) rotate(0);opacity:1}100%{transform:translate(calc(-50% + var(--dx)), -190px) scale(1.4) rotate(var(--rot));opacity:0}}
+@keyframes runAcross{from{transform:translateX(0) scaleX(1)}to{transform:translateX(calc(100vw + 180px)) scaleX(1)}}
+@keyframes twinkle{0%{transform:scale(.2) rotate(0);opacity:1}100%{transform:scale(1.7) rotate(130deg);opacity:0}}
+@media(max-width:720px){.content{grid-template-columns:1fr}.message-card,.heart-card{min-height:auto}.message-card{padding:26px}.heart-card{padding:22px}.wrap{padding-top:20px}.cat-runner{bottom:5vh}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="pill">♡ MADE WITH A LOT OF LOVE ♡</span>
+    <h1>маленький сайт для тебя</h1>
+    <p class="subtitle">котики, сердечки и кое-что очень важное ฅ^•ﻌ•^ฅ</p>
+  </header>
+
+  <section class="panel question" id="questionPanel">
+    <span class="cat-sticker">😽💗</span>
+    <h2>Ты меня любишь?</h2>
+    <p class="subtitle">ответ выбирай сердцем… хотя тут есть очевидный вариант ♡</p>
+    <div class="btns" id="buttonArea">
+      <button class="yes" id="yesBtn">ДААА! 💖</button>
+      <button class="no" id="noBtn">Нет 🙈</button>
+    </div>
+    <p class="hint" id="hint">P.S. кнопка «Нет» немного стесняется.</p>
+  </section>
+
+  <main class="content awaiting" id="loveContent">
+    <section class="message-card">
+      <div class="tiny-label">маленькое признание ♡</div>
+      <p class="message">Прости, что я так мало времени с тобой. Но я <em>всегда думаю о тебе</em>, даже таким способом.</p>
+      <div class="signature">ты очень важен для меня ♡</div>
+      <div class="doodle">🐱💌</div>
+    </section>
+    <section class="heart-card">
+      <p class="heart-title">Сердце, построенное графиками</p>
+      <p class="graph-sub">не нарисовано от руки — вычислено по точкам функции ♡</p>
+      <div class="equations">
+        <div class="eq-head">Параметрические уравнения</div>
+        <div class="eq-line"><span class="eq-dot pink"></span><span><i>x(t)</i> = 16 sin³(<i>t</i>)</span></div>
+        <div class="eq-line"><span class="eq-dot purple"></span><span><i>y(t)</i> = 13 cos(<i>t</i>) − 5 cos(2<i>t</i>) − 2 cos(3<i>t</i>) − cos(4<i>t</i>)</span></div>
+        <div class="eq-foot"><i>t</i> ∈ [0; 2π] · каждая точка вычисляется отдельно</div>
+      </div>
+      <svg id="heartSvg" viewBox="0 0 360 330" role="button" aria-label="Нажми на нарисованное сердце" tabindex="0">
+        <defs>
+          <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b9e2c5"/><stop offset="100%" stop-color="#5ca878"/></linearGradient>
+          <clipPath id="plotClip"><rect x="24" y="20" width="312" height="282" rx="10"/></clipPath>
+        </defs>
+        <g id="gridLines" aria-hidden="true"></g>
+        <g id="axisLabels" aria-hidden="true"></g>
+        <g clip-path="url(#plotClip)">
+          <path id="constructionPath" d="" fill="none" stroke="#91bda0" stroke-width="1.7" stroke-dasharray="5 5" opacity="0"/>
+          <path id="heartPath" d="" fill="url(#heartGrad)"/>
+          <circle id="plotCursor" cx="180" cy="166" r="4.2" fill="#fff" stroke="#4f9b70" stroke-width="2.5" opacity="0"/>
+        </g>
+        <text x="180" y="319" text-anchor="middle" font-size="10" fill="#7da58a">x(t) →</text>
+        <text x="13" y="165" text-anchor="middle" font-size="10" fill="#7da58a" transform="rotate(-90 13 165)">y(t) ↑</text>
+      </svg>
+      <div class="graph-legend">
+        <span><i class="legend-line heart-line"></i> итоговый график</span>
+        <span><i class="legend-line construction-line"></i> вспомогательная кривая</span>
+        <span><i class="legend-dot"></i> текущая вычисленная точка</span>
+      </div>
+      <button class="heart-click" id="heartClick">нажми на сердце! ☝️💗</button>
+      <p class="hint" id="graphHint">сначала построим оси и точки, а потом соединим их в сердце…</p>
+    </section>
+  </main>
+
+  <section class="countdown hidden" id="countdown">
+    <h2 class="count-title">До нашего маленького праздника 💞</h2>
+    <p class="count-sub">31 октября 2026 · пусть этот день будет волшебным!</p>
+    <div class="timer" aria-label="Обратный отсчёт">
+      <div class="timebox"><strong id="days">00</strong><span>дней</span></div>
+      <div class="timebox"><strong id="hours">00</strong><span>часов</span></div>
+      <div class="timebox"><strong id="minutes">00</strong><span>минут</span></div>
+      <div class="timebox"><strong id="seconds">00</strong><span>секунд</span></div>
+    </div>
+  </section>
+  <footer class="foot">сделано с любовью, нежностью и подозрительно большим количеством котиков ♡</footer>
+</div>
+<script>
+const yesBtn=document.getElementById('yesBtn'), noBtn=document.getElementById('noBtn');
+const hint=document.getElementById('hint'), path=document.getElementById('heartPath');
+const svg=document.getElementById('heartSvg'), heartClick=document.getElementById('heartClick');
+const graphHint=document.getElementById('graphHint'), countdown=document.getElementById('countdown');
+let saidYes=false, heartDrawn=false, catsStarted=false;
+
+function dodge(){
+  if(saidYes)return;
+  const area=document.getElementById('buttonArea');
+  const areaRect=area.getBoundingClientRect();
+  const btnRect=noBtn.getBoundingClientRect();
+  // Keep the button inside the question card's dedicated playfield and away from the YES button.
+  area.classList.add('dodging');
+  noBtn.style.position='absolute';
+  const pad=5;
+  const maxLeft=Math.max(pad,area.clientWidth-btnRect.width-pad);
+  const maxTop=Math.max(pad,area.clientHeight-btnRect.height-pad);
+  let left=pad+Math.random()*Math.max(0,maxLeft-pad);
+  let top=pad+Math.random()*Math.max(0,maxTop-pad);
+  const yesRect=yesBtn.getBoundingClientRect();
+  // Try several placements that are not too close to the YES button.
+  for(let i=0;i<18;i++){
+    const candidate={left:areaRect.left+left,top:areaRect.top+top,right:areaRect.left+left+btnRect.width,bottom:areaRect.top+top+btnRect.height};
+    const overlap=!(candidate.right<yesRect.left-18||candidate.left>yesRect.right+18||candidate.bottom<yesRect.top-12||candidate.top>yesRect.bottom+12);
+    if(!overlap)break;
+    left=pad+Math.random()*Math.max(0,maxLeft-pad);
+    top=pad+Math.random()*Math.max(0,maxTop-pad);
+  }
+  noBtn.style.left=left+'px';noBtn.style.top=top+'px';
+  noBtn.style.transform=`rotate(${Math.random()*18-9}deg)`;
+  hint.textContent=['ой, не поймать 🙀','лапки быстрее курсора! 🐾','кажется, кнопка тоже хочет сказать «ДА» 💗','мяу! не сегодня 😹'][Math.floor(Math.random()*4)];
+}
+noBtn.addEventListener('pointerenter',dodge);
+noBtn.addEventListener('pointerdown',e=>{e.preventDefault();dodge()});
+noBtn.addEventListener('click',e=>{e.preventDefault();dodge()});
+noBtn.addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});
+document.getElementById('buttonArea').addEventListener('pointermove',e=>{
+  if(saidYes)return;
+  const r=noBtn.getBoundingClientRect();
+  const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
+  if(Math.hypot(dx,dy)<62)dodge();
+});
+
+function burst(x,y,count=26){
+  const emojis=['💗','💖','💕','💘','💞','♡','✨','🐾'];
+  for(let i=0;i<count;i++){
+    const el=document.createElement('span');el.className='float-heart';
+    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=(x+(Math.random()-.5)*100)+'px';el.style.top=(y+(Math.random()-.5)*45)+'px';
+    el.style.setProperty('--dx',(Math.random()*240-120)+'px');
+    el.style.setProperty('--rot',(Math.random()*90-45)+'deg');
+    el.style.animationDelay=(Math.random()*.25)+'s';
+    document.body.appendChild(el);setTimeout(()=>el.remove(),2300);
+  }
+}
+function makeHeart(){
+  // Draw a real parametric graph: calculate points from the equations and reveal them gradually.
+  const ns='http://www.w3.org/2000/svg';
+  const grid=document.getElementById('gridLines');
+  const labels=document.getElementById('axisLabels');
+  const construction=document.getElementById('constructionPath');
+  const cursor=document.getElementById('plotCursor');
+  grid.innerHTML='';labels.innerHTML='';
+  // Plot area: x from -18..18, y from -18..18; map math coordinates into SVG pixels.
+  const X=x=>180+x*7.1, Y=y=>166-y*7.1;
+  for(let v=-15;v<=15;v+=5){
+    const x=X(v),y=Y(v);
+    const vl=document.createElementNS(ns,'line');vl.setAttribute('x1',x);vl.setAttribute('x2',x);vl.setAttribute('y1',20);vl.setAttribute('y2',302);if(v===0)vl.setAttribute('class','axis');grid.appendChild(vl);
+    const hl=document.createElementNS(ns,'line');hl.setAttribute('x1',24);hl.setAttribute('x2',336);hl.setAttribute('y1',y);hl.setAttribute('y2',y);if(v===0)hl.setAttribute('class','axis');grid.appendChild(hl);
+    if(v!==0){
+      const tx=document.createElementNS(ns,'text');tx.setAttribute('x',x);tx.setAttribute('y',Y(0)+13);tx.setAttribute('text-anchor','middle');tx.textContent=v;labels.appendChild(tx);
+      const ty=document.createElementNS(ns,'text');ty.setAttribute('x',X(0)-7);ty.setAttribute('y',y+3);ty.setAttribute('text-anchor','end');ty.textContent=v;labels.appendChild(ty);
+    }
+  }
+  // Thin dashed guide: a sampled construction trace appears first, then the final heart is drawn over it.
+  const pts=[];
+  for(let i=0;i<=720;i++){
+    const t=i/720*Math.PI*2;
+    const x=16*Math.pow(Math.sin(t),3);
+    const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+    pts.push([X(x),Y(y)]);
+  }
+  const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(2)+','+p[1].toFixed(2)).join(' ')+' Z';
+  construction.setAttribute('d',d);construction.style.opacity='0';
+  path.setAttribute('d',d);
+  path.classList.remove('draw','complete');
+  path.style.animation='none';path.style.strokeDasharray='none';path.style.strokeDashoffset='0';
+  path.style.fillOpacity='0';path.style.strokeOpacity='0';
+  cursor.setAttribute('cx',pts[0][0]);cursor.setAttribute('cy',pts[0][1]);cursor.setAttribute('opacity','0');
+  heartDrawn=false;
+  graphHint.textContent='Шаг 1/3 · строим координатную плоскость…';
+  // Stage 1: reveal the grid/axes first.
+  grid.style.opacity='0';labels.style.opacity='0';
+  grid.style.transition='opacity 1.1s ease';labels.style.transition='opacity 1.1s ease';
+  requestAnimationFrame(()=>{grid.style.opacity='1';labels.style.opacity='1'});
+  setTimeout(()=>{
+    graphHint.textContent='Шаг 2/3 · вычисляем точки по параметру t…';
+    construction.style.transition='opacity .5s ease';construction.style.opacity='.8';
+    cursor.setAttribute('opacity','1');
+    // The cursor follows the curve and the final curve is drawn behind it progressively.
+    const total=pts.length;
+    const duration=6500;
+    const startTime=performance.now();
+    path.style.strokeDasharray=path.getTotalLength();
+    path.style.strokeDashoffset=path.getTotalLength();
+    path.style.strokeOpacity='1';
+    path.style.fillOpacity='0';
+    function drawFrame(now){
+      const progress=Math.min(1,(now-startTime)/duration);
+      const idx=Math.min(total-1,Math.floor(progress*(total-1)));
+      const pt=pts[idx];cursor.setAttribute('cx',pt[0]);cursor.setAttribute('cy',pt[1]);
+      path.style.strokeDashoffset=String(path.getTotalLength()*(1-progress));
+      if(progress<1){requestAnimationFrame(drawFrame)}
+      else{
+        path.style.strokeDashoffset='0';path.style.fillOpacity='.22';
+        construction.style.opacity='0';cursor.setAttribute('opacity','0');
+        graphHint.textContent='Шаг 3/3 · точки соединены — сердце построено! ♡';
+        heartDrawn=true;
+        setTimeout(()=>{
+          heartClick.classList.add('show');svg.classList.add('clickable');
+          graphHint.textContent='Готово! Нажми на сердце — дальше тебя ждёт сюрприз 💗';
+        },450);
+      }
+    }
+    requestAnimationFrame(drawFrame);
+  },1250);
+}
+yesBtn.addEventListener('click',()=>{
+  if(saidYes)return;saidYes=true;
+  noBtn.style.display='none';yesBtn.textContent='Я ТАК И ЗНАЛА! 💞';
+  hint.textContent='УРААА! лови все мои сердечки 💖';
+  const r=yesBtn.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,55);
+  document.getElementById('questionPanel').style.borderColor='#91c9a5';
+  const content=document.getElementById('loveContent');
+  content.classList.remove('awaiting');content.classList.add('revealed');
+  setTimeout(()=>content.scrollIntoView({behavior:'smooth',block:'center'}),180);
+  makeHeart();
+});
+function activateHeart(){
+  if(!heartDrawn||catsStarted)return;catsStarted=true;
+  const r=svg.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,70);
+  heartClick.classList.remove('show');graphHint.textContent='Сюрприз начинается… ♡';
+  countdown.classList.remove('hidden');
+  countdown.scrollIntoView({behavior:'smooth',block:'center'});
+  runCats();updateCountdown();setInterval(updateCountdown,1000);
+}
+svg.addEventListener('click',activateHeart);svg.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activateHeart()}});
+heartClick.addEventListener('click',activateHeart);
+
+function runCats(){
+  const cats=['🐈','🐈‍⬛','😻','😺','🐱','🐈‍⬛','🐈','😽','🐾'];
+  const captions=['мяу-мяу! 💗','любовь несётся!','поймай лапку!','обнимашки!'];
+  cats.forEach((cat,i)=>setTimeout(()=>{
+    const el=document.createElement('div');el.className='cat-runner';el.style.setProperty('--dur',(4.1+Math.random()*2.4)+'s');
+    el.style.bottom=(5+Math.random()*24)+'vh';el.style.fontSize=(42+Math.random()*28)+'px';
+    el.innerHTML=cat+'<span>'+captions[i%captions.length]+'</span>';
+    document.body.appendChild(el);setTimeout(()=>el.remove(),7200);
+  },i*310));
+  for(let i=0;i<24;i++)setTimeout(()=>{
+    const s=document.createElement('span');s.className='sparkle';s.textContent=['✨','💗','⭐','🐾'][i%4];
+    s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*80+'vh';s.style.fontSize=(15+Math.random()*22)+'px';
+    document.body.appendChild(s);setTimeout(()=>s.remove(),1500);
+  },i*110);
+}
+function updateCountdown(){
+  // Countdown to the start of 31 October 2026 in the visitor's local timezone.
+  const target=new Date(2026,9,31,0,0,0).getTime();
+  let diff=target-Date.now();
+  if(diff<=0){document.getElementById('days').textContent='00';document.getElementById('hours').textContent='00';document.getElementById('minutes').textContent='00';document.getElementById('seconds').textContent='00';document.querySelector('.count-sub').textContent='Этот день уже наступил! Пусть он будет чудесным 💖';return}
+  const d=Math.floor(diff/86400000);diff%=86400000;
+  const h=Math.floor(diff/3600000);diff%=3600000;
+  const m=Math.floor(diff/60000);const s=Math.floor((diff%60000)/1000);
+  document.getElementById('days').textContent=String(d).padStart(2,'0');
+  document.getElementById('hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+  document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+}
+</script>
+</body>
+</html>
